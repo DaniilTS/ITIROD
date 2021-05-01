@@ -1,0 +1,41 @@
+.header-elements{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    margin-right: 1%;
+    height: 70%;
+    width: 10%;
+}
+
+.header-btn{
+    height: 100%;
+    width: 100%;
+}
+
+main{
+    align-items: center;
+}
+
+form{
+    height: 73%;
+    width: 27%;
+}
+
+input{
+    width: 85%;
+    height: 20%;
+}
+
+input[type="datetime-local"]{
+    padding-right: 5%;
+    width: 80%;
+}
+
+.form-div-style{
+    padding: 15px 0 15px 0;
+    margin-bottom: 15px;
+    height: 90%;
+    width: 100%;
+}
+
