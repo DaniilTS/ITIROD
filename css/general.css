@@ -2,7 +2,8 @@
     --header-color:rgba(33, 33, 33, 0.5);
     --form-content-color:rgba(255, 255, 255, 0.15);
     --form-input-color: #C4C4C4;
-    --form-input-text-color:#EEEEEE;
+    --form-input-placeholder-color:#EEEEEE;
+    --form-input-text-color:#3E403C;
     --button-primary-color: #409EBC;
     --text-primary-color:#3DD4D2;
     --text-secondary-color:#FFFFFF
@@ -55,7 +56,6 @@ h1{
 button{
     background-color: var(--button-primary-color);
 }
-
 
 .header-div__button,
 .header__button {

@@ -4,17 +4,17 @@
     justify-content: center;
 }
 
-.login-form{
-    height: 375px;
+.signup-form{
+    height: 600px;
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.login-form__content{
+.signup-form__content{
     width: 100%;
-    height: 250px;
+    height: 500px;
     border-radius: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -27,10 +27,11 @@
     background-color: var(--form-content-color);
 }
 
-.login-form__input{
+.signup-form__input{
     width: 90%;
     height: 80px;
     padding-left: 20px;
+    padding-right: 20px;
     border-radius: 30px;
     font-size: 20px;
 
@@ -38,11 +39,11 @@
     background-color: var(--form-input-color);
 }
 
-.login-form__input::placeholder{
-    color: var(--form-input-text-color);
+.signup-form__input::placeholder{
+    color: var(--form-input-placeholder-color);
 }
 
-.login-form__button{
+.signup-form__button{
     width: 100%;
     height: 75px;
     border-radius: 30px;
@@ -53,26 +54,26 @@
 @media only screen
 and (device-width : 375px)
 and (device-height : 812px) {
-    .login-form{
-        height: 700px;
+    .signup-form {
+        height: 1150px;
         width: 800px;
     }
 
-    .login-form__content{
-        height: 450px;
+    .signup-form__content {
+        height: 900px;
         border-radius: 50px;
         padding-top: 45px;
         padding-bottom: 45px;
     }
 
-    .login-form__input{
+    .signup-form__input {
         width: 90%;
         height: 160px;
         padding-left: 20px;
         font-size: 40px;
     }
 
-    .login-form__button{
+    .signup-form__button {
         height: 140px;
         border-radius: 50px;
         font-size: 40px;
