@@ -1,5 +1,7 @@
 :root{
     --header-color:rgba(33, 33, 33, 0.5);
+    --upcoming-tasks-bar-color:rgba(27, 20, 20, 0.7);
+    --upcoming-tasks-bar-task-color: rgba(255, 255, 255, 0.1);
     --form-content-color:rgba(255, 255, 255, 0.15);
     --form-input-color: #C4C4C4;
     --form-input-placeholder-color:#EEEEEE;
@@ -19,7 +21,7 @@
 }
 
 .body{
-    background-color: burlywood;
+    background-color: #C4C4C4;
 }
 
 .header{
@@ -50,6 +52,7 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 320px;
 }
 
@@ -76,6 +79,10 @@ button{
 
 .paragraph-text__primary{
     color: var(--text-primary-color);
+}
+
+.header-div__username{
+    color: var(--text-secondary-color);
 }
 
 @media only screen
