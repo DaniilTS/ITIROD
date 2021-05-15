@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New...</title>
+    <link type="text/css" rel="stylesheet" href="../css/CreateNew.css">
+</head>
+<body class="body">
+<header class="header">
+    <h1>RemindMe</h1>
+    <div class="header-div">
+        <h2 class="header-div__username">DaniilTS</h2>
+        <button class="header-div__button">Log Out</button>
+    </div>
+</header>
+<main class="main">
+    <form class="creation-form">
+        <div class="creation-form__content">
+            <div class="creation-form__top">
+                <span class="creation-form__span">Create New...</span>
+                <button class="creation-form__close-button">&#9587</button>
+            </div>
+            <div class="creation-form__radios radio">
+                <label class="radio__label">
+                    <input class="creation-form__radio" id="creation-form__left-input" type="radio">
+                    Task
+                </label>
+                <label class="radio__label">
+                    Appointment
+                    <input class="creation-form__radio" id="creation-form__right-input" type="radio" checked="checked">
+                </label>
+            </div>
+            <input class="creation-form__input" type="text" placeholder="Title">
+            <input class="creation-form__input" type="text" placeholder="Description">
+            <div class="creation-form__date-inputs">
+                <input class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                <input class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+            </div>
+            <input class="creation-form__input" type="text" placeholder="Place">
+            <input class="creation-form__input" type="color" value="#47BF63">
+
+            <button class="creation-form__button">Done</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

@@ -16,6 +16,8 @@ html{
     width: 100%;
     height: 10vh;
 
+    opacity: 0.9;
+
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -24,7 +26,7 @@ html{
 }
 
 .upcoming-tasks-bar__list{
-    min-width: 95%;
+    width: 95%;
     overflow: hidden;
 
     display: grid;

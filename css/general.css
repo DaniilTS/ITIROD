@@ -5,9 +5,9 @@
     --task-color-to: rgba(255, 255, 255, 0.1);
     --form-content-color:rgba(255, 255, 255, 0.15);
     --form-input-color: #C4C4C4;
-    --form-input-placeholder-color:#EEEEEE;
     --form-input-text-color:#3E403C;
     --button-primary-color: #409EBC;
+    --creation-form-primary-button-color: #424242;
     --text-primary-color:#3DD4D2;
     --text-secondary-color:#FFFFFF
 }
@@ -61,9 +61,16 @@ button{
     background-color: var(--button-primary-color);
 }
 
+input:hover,
 button:hover{
     border: 2px solid var(--text-secondary-color);
+    transition: 0.5s ease;
 }
+
+/*input:focus{*/
+/*    background-color: var(--text-primary-color);*/
+/*    transition: 0.5s ease;*/
+/*}*/
 
 h1, h2, p, span{
     cursor: default;
