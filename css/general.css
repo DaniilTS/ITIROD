@@ -1,7 +1,8 @@
 :root{
     --header-color:rgba(33, 33, 33, 0.5);
     --upcoming-tasks-bar-color:rgba(27, 20, 20, 0.7);
-    --upcoming-tasks-bar-task-color: rgba(255, 255, 255, 0.1);
+    --task-color-from: rgba(38, 29, 29, 0.75);
+    --task-color-to: rgba(255, 255, 255, 0.1);
     --form-content-color:rgba(255, 255, 255, 0.15);
     --form-input-color: #C4C4C4;
     --form-input-placeholder-color:#EEEEEE;
@@ -60,12 +61,20 @@ button{
     background-color: var(--button-primary-color);
 }
 
+button:hover{
+    border: 2px solid var(--text-secondary-color);
+}
+
+h1, h2, p, span{
+    cursor: default;
+}
+
 .header-div__button,
 .header__button {
     width: 150px;
     height: 50px;
     border-radius: 30px;
-    font-size: 20px;
+    font-size: 25px;
     color: white;
 }
 

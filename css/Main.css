@@ -1,5 +1,13 @@
 @import "general.css";
 
+html{
+    overflow: hidden;
+}
+
+.main{
+    justify-content: space-between;
+}
+
 .header-div{
     width: 270px;
 }
@@ -16,21 +24,21 @@
 }
 
 .upcoming-tasks-bar__list{
-    width: 95%;
+    min-width: 95%;
+    overflow: hidden;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(19, 1fr);
 }
 
 .upcoming-tasks-bar__item{
-    width: 75px;
-
+    height: inherit;
+    min-width: 80px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 1fr 0.05rem 5fr;
+    grid-auto-rows: 1fr 0.05rem 3fr;
 
-    background: linear-gradient(115deg, rgba(38, 29, 29, 0.75), rgba(255, 255, 255, 0.1) );
+    background: linear-gradient(115deg, var(--task-color-from), var(--task-color-to) );
 }
 
 .bar-item__time{
@@ -87,31 +95,130 @@
 }
 
 .upcoming-tasks-bar__button{
-    width: 100px;
+    min-width: 75px;
     font-size: 30px;
+
+    transition-duration: 1s;
+    transition-property: transform;
+
     color: var(--text-secondary-color);
     background-color: transparent;
     cursor: pointer;
 }
 
-.border{
-    width: 100%;
-    height: 450px;
-    margin-top: auto;
-    margin-bottom: 0;
-    align-self: flex-end;
+.upcoming-tasks-bar__button:hover{
+    border: none;
+    transform: rotate(180deg);
+}
+
+.upcoming-tasks-bar__button:not(hover){
+    transform: rotate(0deg);
+}
+
+.calendar-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendar-actions__button{
+    width: 100px;
+    color: var(--text-secondary-color);
+    background-color: var(--header-color);
+}
+
+.calendar-views{
+    width: auto;
+    height: 55px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.calendar-views__button{
+    height: 50px;
+    width: 120px;
+
+    font-size: 17px;
+
+    color: var(--text-secondary-color);
+    background-color: var(--header-color);
+}
+
+.calendar-views__button_focused{
+    border: 1px solid var(--text-secondary-color);
+}
+
+.calendar-views__button_focused{
+    height: 55px;
+}
+
+.calendar-views__button_focused,
+.calendar-views__button:hover,
+.calendar-actions__button:hover,
+.view-control__buttons:hover,
+.view-control__select:hover{
+    border: 1px solid var(--text-secondary-color);
+    border-bottom-color: transparent;
+}
+
+.view-control{
+    width: auto;
+    display: flex;
+}
+
+.view-control__button{
+    width: 60px;
+
+    border: 1px solid var(--text-secondary-color);
+    border-bottom-color: transparent;
+
+    font-size: 20px;
+    color: var(--text-secondary-color);
+    background-color: var(--header-color);
+}
+
+.view-control__select{
+    width: auto;
+    font-size: 15px;
+
+    border-top: 1px solid var(--text-secondary-color);
+    color: var(--text-secondary-color);
+    background-color: var(--header-color);
+}
+
+.view-control__select > option{
+    font-size: 15px;
+}
+
+.calendar-border{
+    height: 470px;
     background-color: white;
+}
+
+.calendar-wrapper{
+    height: 520px;
+    width: 100%;
+
+    margin-bottom: 3px;
 }
 
 .calendar{
     width: 100%;
     height: inherit;
+
+    padding-top: 1px;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr repeat(5, 2.5fr);
+    grid-template: 1fr repeat(5, 2.5fr)/repeat(7, 1fr);
 
     column-gap: 1px;
     row-gap: 1px;
+}
+
+.calendar__day:hover{
+    border: 2px solid var(--text-primary-color);
 }
 
 .calendar__day-name{
@@ -135,7 +242,25 @@
 
 .day-tasks{
     width: 100%;
+
+    display: grid;
+    grid-template: repeat(3, 1fr)/repeat(6, 1fr);
 }
+
+
+.day-tasks__color{
+    height: 18px;
+    width: 18px;
+
+    font-size: 16px;
+    text-align: center;
+
+    align-self: flex-start;
+    justify-self: center;
+
+    border-radius: 50%;
+}
+
 
 .calendar__day-name:nth-child(7),
 .day:nth-child(7n){
