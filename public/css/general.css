@@ -3,12 +3,12 @@
     --upcoming-tasks-bar-color:rgba(27, 20, 20, 0.7);
     --task-color-from: rgba(38, 29, 29, 0.75);
     --task-color-to: rgba(255, 255, 255, 0.1);
-    --form-content-color:rgba(255, 255, 255, 0.15);
-    --form-input-color: #C4C4C4;
+    --form-content-color: rgba(158, 137, 137, 0.34);
+    --form-input-color: #80aff3;
     --form-input-text-color:#3E403C;
     --button-primary-color: #409EBC;
     --creation-form-primary-button-color: #424242;
-    --creation-form-background-color:#326A69;
+    --creation-form-background-color: #efdd69;
     --text-primary-color:#3DD4D2;
     --text-secondary-color:#FFFFFF;
     --day-today-color: #00ffff;
@@ -27,7 +27,7 @@
 }
 
 .body{
-    background-color: #C4C4C4;
+    background-color: burlywood;
 }
 
 .header{
@@ -68,7 +68,7 @@ button{
 
 input:hover,
 button:hover{
-    border: 2px solid var(--text-secondary-color);
+    box-shadow: inset 0 0 0 2px var(--text-secondary-color);
     transition: 0.5s ease;
 }
 
