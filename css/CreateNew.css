@@ -34,13 +34,17 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-left: 150px;
+    padding-left: 100px;
     padding-right: 20px;
     padding-top: 10px;
 }
 
 .creation-form__span{
     height: 20px;
+}
+
+#create-new-span{
+    padding-left: 60px;
 }
 
 .creation-form__close-button{
@@ -209,7 +213,7 @@ and (device-height : 812px) {
         border-radius: 50px;
 
         grid-auto-rows: auto minmax(150px, auto);
-        row-gap: 10px;
+        row-gap: 20px;
     }
 
     .creation-form__top{

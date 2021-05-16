@@ -39,10 +39,6 @@
     background-color: var(--form-input-color);
 }
 
-.signup-form__input::placeholder{
-    color: var(--form-input-placeholder-color);
-}
-
 .signup-form__button{
     width: 100%;
     height: 75px;

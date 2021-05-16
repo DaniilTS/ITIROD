@@ -11,8 +11,9 @@
     --creation-form-background-color:#326A69;
     --text-primary-color:#3DD4D2;
     --text-secondary-color:#FFFFFF;
-    --day-today-color: #095757;
-    --day-on-focus-color:#095757;
+    --day-today-color: #00ffff;
+    --day-on-focus-color: #0021ff;
+    --bold-color: #000000;
 }
 
 *{
@@ -22,6 +23,7 @@
     box-sizing: border-box;
     outline: none;
     font-family: 'Roboto', sans-serif;
+    list-style-type: none;
 }
 
 .body{
