@@ -6,23 +6,26 @@
 
 .main{
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .creation-form{
-    height: 600px;
+    height: auto;
     width: 400px;
+    margin-top: 20px;
 }
 
 .creation-form__content{
     width: inherit;
-    height: inherit;
+    height: auto;
     padding-bottom: 15px;
     border-radius: 30px;
 
     display: grid;
-    grid-template-rows: 1fr 1fr repeat(5, 2fr) 1fr;
+    grid-auto-rows: auto minmax(60px, auto);
+    row-gap: 10px;
 
-    background-color: var(--text-primary-color);
+    background-color: var(--creation-form-background-color);
 }
 
 .creation-form__top{
@@ -33,6 +36,7 @@
 
     padding-left: 150px;
     padding-right: 20px;
+    padding-top: 10px;
 }
 
 .creation-form__span{
@@ -41,7 +45,7 @@
 
 .creation-form__close-button{
     font-size: 20px;
-    background-color: var(--text-primary-color);
+    background-color: var(--creation-form-background-color);
 }
 
 .creation-form__radios{
@@ -140,6 +144,56 @@
     background-color: var(--creation-form-primary-button-color);
 }
 
+.reminder-button{
+    color: var(--form-input-text-color);
+    background-color: var(--form-input-color);
+}
+
+.reminders{
+    height: auto;
+    width: 90%;
+    min-height: 75px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+
+    align-self: center;
+    justify-self: center;
+
+    background-color: var(--form-input-color);
+}
+
+.reminders-list{
+    margin-top: 10px;
+}
+
+.reminders-list__item{
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.reminder-input{
+    height: 100%;
+    width: 60%;
+    font-size: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.delete-button{
+    height: 30px;
+    width: 100px;
+}
+
 @media only screen
 and (device-width : 375px)
 and (device-height : 812px) {
@@ -148,21 +202,24 @@ and (device-height : 812px) {
     }
 
     .creation-form {
-        height: 1350px;
         width: 800px;
     }
 
     .creation-form__content {
         border-radius: 50px;
+
+        grid-auto-rows: auto minmax(150px, auto);
+        row-gap: 10px;
     }
 
     .creation-form__top{
-        padding-left: 300px;
+        padding-left: 250px;
         padding-right: 40px;
     }
 
     .creation-form__span,
     .creation-form__close-button,
+    .reminders__span,
     .radio__label{
         font-size: 35px;
     }
@@ -179,13 +236,14 @@ and (device-height : 812px) {
 
     .creation-form__input {
         width: 90%;
-        height: 80%;
+        height: 140px;
         font-size: 40px;
     }
 
     .creation-form__date-inputs {
         padding-left: 40px;
         padding-right: 40px;
+        height: 140px;
     }
 
     .creation-form__date-input{
@@ -207,5 +265,23 @@ and (device-height : 812px) {
         height: 140px;
         border-radius: 50px;
         font-size: 40px;
+    }
+
+    .reminders{
+        min-height: 140px;
+        padding-bottom: 20px;
+    }
+
+    .reminders-list{
+        width: 680px;
+    }
+
+    .delete-button{
+        height: 60px;
+        width: 200px;
+    }
+
+    .reminder-input{
+        width: 400px;
     }
 }

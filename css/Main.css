@@ -109,8 +109,8 @@ html{
 }
 
 .upcoming-tasks-bar__button:hover{
-    border: none;
     transform: rotate(180deg);
+    border: none;
 }
 
 .upcoming-tasks-bar__button:not(hover){
@@ -161,9 +161,8 @@ html{
 
 .calendar-views__button_focused,
 .calendar-views__button:hover,
-.calendar-actions__button:hover,
 .view-control__buttons:hover,
-.view-control__select:hover{
+.view-control__select:hover {
     border: 1px solid var(--text-secondary-color);
     border-bottom-color: transparent;
 }
@@ -171,7 +170,6 @@ html{
 .view-control{
     width: auto;
     display: flex;
-    margin-right: 110px;
 }
 
 .view-control__button{
@@ -222,8 +220,17 @@ html{
     row-gap: 1px;
 }
 
-.calendar__day:hover{
-    border: 2px solid var(--text-primary-color);
+.calendar__day_today{
+    border:2px solid var(--day-today-color);
+}
+
+    .calendar__day:hover{
+        border: 2px solid var(--text-primary-color);
+    }
+
+
+.day:focus{
+    border: 2px solid var(--day-on-focus-color);
 }
 
 .calendar__day-name{

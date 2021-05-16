@@ -1,0 +1,13 @@
+@import "CreateNew.css";
+
+.creation-form__top{
+    margin-left: 30px;
+}
+
+@media only screen
+and (device-width : 375px)
+and (device-height : 812px) {
+    .creation-form__top{
+        margin-left: 80px;
+    }
+}
