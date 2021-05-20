@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit</title>
+  <link type="text/css" rel="stylesheet" href="css/Edit.css">
+</head>
+<body class="body">
+<header class="header">
+  <h1>RemindMe</h1>
+  <div class="header-div">
+    <h2 class="header-div__username">DaniilTS</h2>
+    <button class="header-div__button">Log Out</button>
+  </div>
+</header>
+<main class="main">
+  <form class="creation-form">
+    <div class="creation-form__content">
+      <div class="creation-form__top">
+        <span class="creation-form__span" id="edit-span">Edit</span>
+        <button class="creation-form__close-button">&#9587</button>
+      </div>
+      <div class="creation-form__radios radio">
+        <label class="radio__label">
+          <input class="creation-form__radio" id="creation-form__left-input" type="radio">
+          Task
+        </label>
+        <label class="radio__label">
+          Appointment
+          <input class="creation-form__radio" id="creation-form__right-input" type="radio" checked="checked">
+        </label>
+      </div>
+      <input class="creation-form__input" type="text" placeholder="Title" value="Кот">
+      <input class="creation-form__input" type="text" placeholder="Description" value="Погладить кота">
+      <div class="creation-form__date-inputs">
+        <input class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+        <input class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+      </div>
+      <button class="creation-form__button reminder-button" type="button">Add Reminder</button>
+      <div class="creation-form__reminders reminders">
+        <span class="reminders__span">Reminders:</span>
+        <ul class="reminders-list">
+          <li class="reminders-list__item">
+            <input class="creation-form__input reminder-input" type="datetime-local" value="2017-06-01T08:30">
+            <button class="creation-form__button delete-button" type="button">Delete</button>
+          </li>
+          <li class="reminders-list__item">
+            <input class="creation-form__input reminder-input" type="datetime-local" value="2017-06-01T08:30">
+            <button class="creation-form__button delete-button" type="button">Delete</button>
+          </li>
+          <li class="reminders-list__item">
+            <input class="creation-form__input reminder-input" type="datetime-local" value="2017-06-01T08:30">
+            <button class="creation-form__button delete-button" type="button">Delete</button>
+          </li>
+        </ul>
+      </div>
+      <input class="creation-form__input" type="text" placeholder="Place" value="Дом">
+      <input class="creation-form__input" type="color" value="#3DD4D2">
+
+      <button class="creation-form__button" type="submit">Done</button>
+    </div>
+  </form>
+</main>
+</body>
+</html>

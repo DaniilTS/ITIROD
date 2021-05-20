@@ -1,0 +1,13 @@
+@import "CreateNew.css";
+
+#edit-span{
+    padding-left: 90px;
+}
+
+@media only screen
+and (device-width : 375px)
+and (device-height : 812px) {
+    #edit-span{
+        padding-left: 120px;
+    }
+}
