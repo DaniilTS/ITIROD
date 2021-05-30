@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+    <link type="text/css" rel="stylesheet" href="css/SignUp.css">
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+    <script src="js/config.json" type="application/json"></script>
+    <script src="js/general.js"></script>
+</head>
+<body class="body">
+<header class="header">
+    <h1>SignUp</h1>
+    <button class="header__button" onclick="RedirectTo('LogIn')">Log In</button>
+</header>
+<main class="main">
+    <form class="signup-form">
+        <div class="signup-form__content">
+            <input id="email" class="signup-form__input" type="text" placeholder="Email">
+            <input id="userName" class="signup-form__input" type="text" placeholder="UserName">
+            <input id="password" class="signup-form__input" type="password" placeholder="Password">
+            <input id="birthdayDate" class="signup-form__input" placeholder="Birthday Date" onfocus="(this.type='date')"
+                   onblur="(this.type='text')">
+        </div>
+        <button id="signUpBtn" class="signup-form__button" type="button">Sign Up</button>
+    </form>
+</main>
+</body>
+</html>
+
+<script src="js/signup.js"></script>
+

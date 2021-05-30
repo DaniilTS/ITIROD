@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>About</title>
     <link type="text/css" rel="stylesheet" href="css/index.css">
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+    <script src="js/config.json" type="application/json"></script>
+    <script src="js/general.js"></script>
 </head>
 <body class="body">
 <header class="header">
     <h1>About</h1>
     <div class="header-div">
-        <button class="header-div__button">Log In</button>
-        <button class="header-div__button">Sign Up</button>
+        <button class="header-div__button" onclick="RedirectTo('LogIn')">Log In</button>
+        <button class="header-div__button" onclick="RedirectTo('SignUp')">Sign Up</button>
     </div>
 </header>
 <main class="main">

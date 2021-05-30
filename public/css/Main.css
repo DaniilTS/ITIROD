@@ -214,11 +214,11 @@ html{
 
 .upcoming-tasks-bar__button:hover {
     transform: rotate(180deg);
-    border: none;
 }
 
 .upcoming-tasks-bar__button:not(hover) {
     transform: rotate(0deg);
+    box-shadow: 0 0 0 0;
 }
 
 .calendar-not-open{
