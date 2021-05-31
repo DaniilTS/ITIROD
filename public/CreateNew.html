@@ -45,19 +45,20 @@
                 <input class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
                 <input class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
             </div>
-            <button class="creation-form__button reminder-button" type="button">Add Reminder</button>
+            <button id="addReminderBtn" class="creation-form__button reminder-button" type="button">Add Reminder</button>
             <div class="creation-form__reminders reminders">
                 <span class="reminders__span">Reminders:</span>
-                <ul class="reminders-list">
-
+                <ul id="remindersList" class="reminders-list">
                 </ul>
             </div>
             <input class="creation-form__input" type="text" placeholder="Place">
             <input class="creation-form__input" type="color" value="#47BF63">
 
-            <button class="creation-form__button" type="submit">Done</button>
+            <button id="createNewBtn" class="creation-form__button" type="button">Done</button>
         </div>
     </form>
 </main>
 </body>
 </html>
+
+<script src="js/createNew.js"></script>

@@ -4,6 +4,7 @@ document.getElementById('signUpBtn').addEventListener('click', (e) => {
     const password = document.getElementById('password').value;
     const birthdayDate = document.getElementById('birthdayDate').value;
 
+    console.log(password);
     if(email && username && password && birthdayDate){
         signUpUser(email, username, password, birthdayDate);
     } else {
