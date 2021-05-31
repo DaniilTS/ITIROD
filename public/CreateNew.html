@@ -39,11 +39,11 @@
                     <input class="creation-form__radio" id="creation-form__right-input" type="radio" checked="checked">
                 </label>
             </div>
-            <input class="creation-form__input" type="text" placeholder="Title">
-            <input class="creation-form__input" type="text" placeholder="Description">
+            <input id="title" class="creation-form__input" type="text" placeholder="Title">
+            <input id="description" class="creation-form__input" type="text" placeholder="Description">
             <div class="creation-form__date-inputs">
-                <input class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                <input class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                <input id="start" class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                <input id="end" class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
             </div>
             <button id="addReminderBtn" class="creation-form__button reminder-button" type="button">Add Reminder</button>
             <div class="creation-form__reminders reminders">
@@ -51,8 +51,8 @@
                 <ul id="remindersList" class="reminders-list">
                 </ul>
             </div>
-            <input class="creation-form__input" type="text" placeholder="Place">
-            <input class="creation-form__input" type="color" value="#47BF63">
+            <input id="place" class="creation-form__input" type="text" placeholder="Place">
+            <input id="color" class="creation-form__input" type="color" value="#47BF63">
 
             <button id="createNewBtn" class="creation-form__button" type="button">Done</button>
         </div>
