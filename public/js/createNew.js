@@ -28,30 +28,27 @@ createNewBtn.addEventListener('click', (e) => {
     if (title && description && start && end && color && remindersCheckResult.allInputsFilled) {
         const taskOrAppointment = leftRadioBtn.checked ? 'tasks' : 'appointments';
 
-        database.ref(`users/${auth.currentUser.uid}/${taskOrAppointment}`)
-            .get().then((snapshot) => {
+        const currentTimeInSeconds = dateTimeLocalToSeconds(getCurrentDateTime());
+        const taskOrAppointmentDbRef =
+            database.ref(`users/${auth.currentUser.uid}/${taskOrAppointment}/${currentTimeInSeconds}`);
 
-            const amountOfElements = snapshot.val() ? snapshot.val().length : 0;
-            const taskOrAppointmentDbRef = database.ref(`users/${auth.currentUser.uid}/${taskOrAppointment}/${amountOfElements}`);
-
-            taskOrAppointmentDbRef.set({
-                title: title,
-                description: description,
-                start: dateTimeLocalToSeconds(start),
-                end: dateTimeLocalToSeconds(end),
-                place: place,
-                color: color,
-                reminders: remindersCheckResult.reminders
-            });
-
-            if (taskOrAppointment === 'tasks') {
-                taskOrAppointmentDbRef.update({
-                    isDone: false
-                });
-            }
-
-            setTimeout(RedirectTo('Main'), 1000);
+        taskOrAppointmentDbRef.set({
+            title: title,
+            description: description,
+            start: dateTimeLocalToSeconds(start),
+            end: dateTimeLocalToSeconds(end),
+            place: place,
+            color: color,
+            reminders: remindersCheckResult.reminders
         });
+
+        if (taskOrAppointment === 'tasks') {
+            taskOrAppointmentDbRef.update({
+                isDone: false
+            });
+        }
+
+        // setTimeout(RedirectTo('Main'), 1000);
     } else {
         alert('fill all inputs and reminders');
     }
@@ -114,4 +111,39 @@ function createReminder() {
 
 function dateTimeLocalToSeconds(dateTimeValue) {
     return Math.round(new Date(dateTimeValue) / 1000).toString();
+}
+
+function getCurrentDateTime() {
+    let today = new Date();
+    let date = today.getFullYear() + '-' + getFullMonth() + '-' + getFullDate();
+
+    let time = getFullHours() + ":" + getFullMinutes();
+    return date + 'T' + time;
+}
+
+function getFullMonth(){
+    let currentMonth = (new Date().getMonth() + 1).toString();
+    return checkLength(currentMonth);
+}
+
+function getFullDate(){
+    let currentDate = (new Date().getDate()).toString();
+    return checkLength(currentDate);
+}
+
+function getFullHours(){
+    let currentHours = (new Date().getHours()).toString();
+    return checkLength(currentHours);
+}
+
+function getFullMinutes(){
+    let currentMinutes = (new Date().getMinutes()).toString();
+    return checkLength(currentMinutes);
+}
+
+function checkLength(value){
+    if(value.length === 1){
+        value = '0' + value;
+    }
+    return value;
 }

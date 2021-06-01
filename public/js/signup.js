@@ -1,3 +1,7 @@
+document.getElementById('logInBtn').addEventListener('click', (e)=>{
+   RedirectTo('LogIn');
+});
+
 document.getElementById('signUpBtn').addEventListener('click', (e) => {
     const email = document.getElementById('email').value;
     const username = document.getElementById('userName').value;
