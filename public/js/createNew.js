@@ -1,22 +1,27 @@
+const logOutBtn = document.getElementById('logOutBtn');
 const leftRadioBtn = document.getElementById('creation-form__left-input');
 const rightRadioBtn = document.getElementById('creation-form__right-input');
 const addReminderBtn = document.getElementById('addReminderBtn');
 const remindersList = document.getElementById('remindersList');
 const createNewBtn = document.getElementById('createNewBtn');
 
-leftRadioBtn.addEventListener('click', (e) => {
+logOutBtn.addEventListener('click', ()=>{
+    auth.signOut();
+});
+
+leftRadioBtn.addEventListener('click', () => {
     rightRadioBtn.checked = false;
 });
 
-rightRadioBtn.addEventListener('click', (e) => {
+rightRadioBtn.addEventListener('click', () => {
     leftRadioBtn.checked = false;
 });
 
-addReminderBtn.addEventListener('click', (e) => {
+addReminderBtn.addEventListener('click', () => {
     createReminder();
 });
 
-createNewBtn.addEventListener('click', (e) => {
+createNewBtn.addEventListener('click', () => {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
     const start = document.getElementById('start').value;
@@ -48,7 +53,7 @@ createNewBtn.addEventListener('click', (e) => {
             });
         }
 
-        // setTimeout(RedirectTo('Main'), 1000);
+        // setTimeout(redirectTo('Main'), 20000);
     } else {
         alert('fill all inputs and reminders');
     }
@@ -84,12 +89,12 @@ function createDateTimeInput() {
     return dateTimeInput;
 }
 
-function createDeleteReminderBtn(reminder) {
+function createReminderDeleteBtn(reminder) {
     const btn = document.createElement('button');
     btn.setAttribute('class', 'creation-form__button delete-button');
     btn.type = 'button';
     btn.innerText = 'Delete';
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
         remindersList.removeChild(reminder);
     });
 
@@ -101,7 +106,7 @@ function createReminder() {
     reminder.setAttribute('class', 'reminders-list__item');
 
     const reminderInput = createDateTimeInput();
-    const deleteReminderBtn = createDeleteReminderBtn(reminder);
+    const deleteReminderBtn = createReminderDeleteBtn(reminder);
 
     reminder.appendChild(reminderInput);
     reminder.appendChild(deleteReminderBtn);
@@ -114,9 +119,7 @@ function dateTimeLocalToSeconds(dateTimeValue) {
 }
 
 function getCurrentDateTime() {
-    let today = new Date();
-    let date = today.getFullYear() + '-' + getFullMonth() + '-' + getFullDate();
-
+    let date = new Date().getFullYear() + '-' + getFullMonth() + '-' + getFullDate();
     let time = getFullHours() + ":" + getFullMinutes();
     return date + 'T' + time;
 }

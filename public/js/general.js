@@ -19,16 +19,15 @@ auth.onAuthStateChanged(function(user) {
     if (user) {
         console.log(user);
     } else {
-        isOnAllowedPages();
-        console.log(user);
+        setTimeout(checkUserIsOnAllowedPage, 1000);
     }
 });
 
-function RedirectTo(path) {
-    window.location.href = `${path}.html`
+function redirectTo(path) {
+    window.location.href = `${path}.html`;
 }
 
-function isOnAllowedPages() {
+function checkUserIsOnAllowedPage() {
     const currentURL = window.location.href;
     const clearURL = currentURL.substring(0, currentURL.indexOf('.html'));
     const currentPage = clearURL.substring(clearURL.lastIndexOf('/') + 1);
@@ -37,7 +36,7 @@ function isOnAllowedPages() {
         .then(response => response.json())
         .then(function (json){
             if(!json.noAuthPages.includes(currentPage)){
-                RedirectTo(json.noAuthRedirectPage);
+                redirectTo(json.noAuthRedirectPage);
             }
         });
 }

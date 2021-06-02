@@ -68,7 +68,6 @@ button{
 
 button:hover{
     box-shadow: inset 0 0 0 2px var(--text-secondary-color);
-    transition: 0.5s ease;
 }
 
 input:focus{

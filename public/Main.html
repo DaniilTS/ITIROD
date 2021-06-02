@@ -23,64 +23,16 @@
     </div>
 </header>
 <main class="main">
-    <div class="upcoming-tasks-bar">
-        <ul class="upcoming-tasks-bar__list">
+    <div id="taskBar" class="upcoming-tasks-bar">
+        <ul id="taskBarList" class="upcoming-tasks-bar__list">
             <li class="upcoming-tasks-bar__item bar-item">
                 <span class="bar-item__time">16:00</span>
                 <span class="bar-item__color" style="background-color: #3EBADF"></span>
                 <hr class="bar-item__hr">
                 <p class="bar-item__definition">Залить лабу на гит</p>
             </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #4F8794"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Погладить кота</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
-            <li class="upcoming-tasks-bar__item bar-item">
-                <span class="bar-item__time">16:00</span>
-                <span class="bar-item__color" style="background-color: #FFF501"></span>
-                <hr class="bar-item__hr">
-                <p class="bar-item__definition">Посмотреть стримчик</p>
-            </li>
         </ul>
-        <button class="upcoming-tasks-bar__button">&#9661</button>
+        <button id="taskBarBtn" class="upcoming-tasks-bar__button">&#9661</button>
     </div>
     <div class="calendar-wrapper">
         <div class="calendar-actions">
@@ -90,8 +42,8 @@
                 <button class="calendar-views__button">Week</button>
             </div>
             <div class="calendar-actions__view-control view-control">
-                <button class="view-control__button">&#9665</button>
-                <select class="view-control__select">
+                <button id="previousMonth" class="view-control__button">&#9665</button>
+                <select id="monthSelect" class="view-control__select">
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -105,7 +57,7 @@
                     <option>November</option>
                     <option>December</option>
                 </select>
-                <button class="view-control__button">&#9655</button>
+                <button id="nextMonth" class="view-control__button">&#9655</button>
             </div>
             <button id="createNewBtn" class="calendar-actions__button calendar-actions__button_create-new"></button>
         </div>

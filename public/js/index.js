@@ -1,7 +1,7 @@
 document.getElementById('logInBtn').addEventListener('click', (e)=>{
-   RedirectTo('LogIn');
+   redirectTo('LogIn');
 });
 
 document.getElementById('signUpBtn').addEventListener('click', (e)=>{
-    RedirectTo('SignUp');
+    redirectTo('SignUp');
 });

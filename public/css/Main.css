@@ -210,15 +210,15 @@ html{
     color: var(--text-secondary-color);
     background-color: transparent;
     cursor: pointer;
-}
-
-.upcoming-tasks-bar__button:hover {
-    transform: rotate(180deg);
-}
-
-.upcoming-tasks-bar__button:not(hover) {
-    transform: rotate(0deg);
     box-shadow: 0 0 0 0;
+}
+
+.upcoming-tasks-bar__button:hover{
+    box-shadow: 0 0 0 0;
+}
+
+.upcoming-tasks-bar__button__action {
+    transform: rotate(180deg);
 }
 
 .calendar-not-open{
