@@ -1,7 +1,7 @@
-document.getElementById('logInBtn').addEventListener('click', (e)=>{
+document.getElementById('logInBtn').addEventListener('click', ()=>{
    redirectTo('LogIn');
 });
 
-document.getElementById('signUpBtn').addEventListener('click', (e)=>{
+document.getElementById('signUpBtn').addEventListener('click', ()=>{
     redirectTo('SignUp');
 });

@@ -5,7 +5,7 @@ const addReminderBtn = document.getElementById('addReminderBtn');
 const remindersList = document.getElementById('remindersList');
 const createNewBtn = document.getElementById('createNewBtn');
 
-logOutBtn.addEventListener('click', ()=>{
+logOutBtn.addEventListener('click', () => {
     auth.signOut();
 });
 
@@ -31,11 +31,10 @@ createNewBtn.addEventListener('click', () => {
 
     const remindersCheckResult = checkRemindersInputs();
     if (title && description && start && end && color && remindersCheckResult.allInputsFilled) {
-        const taskOrAppointment = leftRadioBtn.checked ? 'tasks' : 'appointments';
 
         const currentTimeInSeconds = dateTimeLocalToSeconds(getCurrentDateTime());
         const taskOrAppointmentDbRef =
-            database.ref(`users/${auth.currentUser.uid}/${taskOrAppointment}/${currentTimeInSeconds}`);
+            database.ref(`users/${auth.currentUser.uid}/tasks|appointments/${currentTimeInSeconds}`);
 
         taskOrAppointmentDbRef.set({
             title: title,
@@ -47,13 +46,13 @@ createNewBtn.addEventListener('click', () => {
             reminders: remindersCheckResult.reminders
         });
 
-        if (taskOrAppointment === 'tasks') {
+        if (leftRadioBtn.checked) {
             taskOrAppointmentDbRef.update({
                 isDone: false
             });
         }
 
-        // setTimeout(redirectTo('Main'), 20000);
+        setTimeout(() => redirectTo('Main'), 1000);
     } else {
         alert('fill all inputs and reminders');
     }
@@ -124,28 +123,28 @@ function getCurrentDateTime() {
     return date + 'T' + time;
 }
 
-function getFullMonth(){
+function getFullMonth() {
     let currentMonth = (new Date().getMonth() + 1).toString();
     return checkLength(currentMonth);
 }
 
-function getFullDate(){
+function getFullDate() {
     let currentDate = (new Date().getDate()).toString();
     return checkLength(currentDate);
 }
 
-function getFullHours(){
+function getFullHours() {
     let currentHours = (new Date().getHours()).toString();
     return checkLength(currentHours);
 }
 
-function getFullMinutes(){
+function getFullMinutes() {
     let currentMinutes = (new Date().getMinutes()).toString();
     return checkLength(currentMinutes);
 }
 
-function checkLength(value){
-    if(value.length === 1){
+function checkLength(value) {
+    if (value.length === 1) {
         value = '0' + value;
     }
     return value;

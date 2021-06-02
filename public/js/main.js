@@ -4,6 +4,17 @@ const taskBar = document.getElementById('taskBar');
 const taskBarList = document.getElementById('taskBarList');
 const taskBarBtn = document.getElementById('taskBarBtn');
 
+setTimeout(()=>{
+    const tasksAppointmentsDbRef = database.ref(`users/${auth.currentUser.uid}/tasks|appointments`);
+
+    tasksAppointmentsDbRef.on('value', (snapshot) => {
+        let tasks = snapshot.val();
+        let keys = Object.keys(tasks);
+        console.log(tasks);
+    });
+}, 500)
+
+
 setCurrentMonth();
 setViewButtonsActions();
 
@@ -13,6 +24,7 @@ function setCurrentMonth() {
 }
 
 let selectedViewIndex = 1;
+
 function setViewButtonsActions() {
     for (let i = 0; i < calendarViewsBtnList.length; i++) {
         let btn = calendarViewsBtnList[i];
@@ -51,8 +63,8 @@ document.getElementById('previousMonth').addEventListener('click', () => {
 });
 
 let taskBarBtnAction = 1;
-taskBarBtn.addEventListener('click', ()=>{
-    if (taskBarBtnAction === 1){
+taskBarBtn.addEventListener('click', () => {
+    if (taskBarBtnAction === 1) {
         taskBarBtn.classList.add('upcoming-tasks-bar__button__action');
         taskBar.classList.add('task-bar-open');
         taskBarBtnAction = 2;

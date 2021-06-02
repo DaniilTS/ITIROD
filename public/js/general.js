@@ -19,7 +19,7 @@ auth.onAuthStateChanged(function(user) {
     if (user) {
         console.log(user);
     } else {
-        setTimeout(checkUserIsOnAllowedPage, 1000);
+        checkUserIsOnAllowedPage();
     }
 });
 
@@ -36,7 +36,7 @@ function checkUserIsOnAllowedPage() {
         .then(response => response.json())
         .then(function (json){
             if(!json.noAuthPages.includes(currentPage)){
-                redirectTo(json.noAuthRedirectPage);
+                setTimeout(() => redirectTo(json.noAuthRedirectPage), 1000);
             }
         });
 }

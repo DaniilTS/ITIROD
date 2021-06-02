@@ -5,7 +5,7 @@ document.getElementById('logInBtn').addEventListener('click', (e) => {
     if(email && password){
         auth.signInWithEmailAndPassword(email, password)
         .then(function (){
-            setTimeout(redirectTo('Main'), 1000);
+            setTimeout(() => redirectTo('Main'), 1000);
         }).catch(e => console.log(e.message));
 
     } else {

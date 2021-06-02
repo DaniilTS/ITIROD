@@ -24,7 +24,7 @@ function signUpUser(email, password, username, birthdayDate){
                 email: email,
                 birthdayDate: birthdayDate
             }).then(function (){
-                setTimeout(redirectTo('Main'), 1000);
+                setTimeout(() => redirectTo('Main'), 1000);
             });
         })
         .catch(e => console.log(e.message));
