@@ -40,3 +40,44 @@ function checkUserIsOnAllowedPage() {
             }
         });
 }
+
+function dateTimeLocalToSeconds(dateTimeValue) {
+    return Math.round(new Date(dateTimeValue) / 1000).toString();
+}
+
+function secondToLocaleTimeString(seconds){
+    return (new Date(seconds * 1000)).toLocaleTimeString('en-US').substring(0, 5)
+}
+
+function getCurrentDateTime() {
+    let date = new Date().getFullYear() + '-' + getFullMonth() + '-' + getFullDate();
+    let time = getFullHours() + ":" + getFullMinutes();
+    return date + 'T' + time;
+}
+
+function getFullMonth() {
+    let currentMonth = (new Date().getMonth() + 1).toString();
+    return checkLength(currentMonth);
+}
+
+function getFullDate() {
+    let currentDate = (new Date().getDate()).toString();
+    return checkLength(currentDate);
+}
+
+function getFullHours() {
+    let currentHours = (new Date().getHours()).toString();
+    return checkLength(currentHours);
+}
+
+function getFullMinutes() {
+    let currentMinutes = (new Date().getMinutes()).toString();
+    return checkLength(currentMinutes);
+}
+
+function checkLength(value) {
+    if (value.length === 1) {
+        value = '0' + value;
+    }
+    return value;
+}

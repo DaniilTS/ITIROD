@@ -140,6 +140,7 @@ html{
 .upcoming-tasks-bar__item {
     height: inherit;
     min-width: 80px;
+    min-height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr 0.05rem 3fr;
@@ -149,8 +150,10 @@ html{
 
 .bar-item__time {
     margin-top: 1px;
+    margin-left: 1px;
     align-self: center;
 
+    overflow: hidden;
     color: var(--text-secondary-color);
 
     grid-column-start: 1;
@@ -187,12 +190,11 @@ html{
     font-size: 13px;
     padding-left: 2px;
     align-self: center;
-    justify-self: center;
 
     color: var(--text-secondary-color);
 
     overflow: hidden;
-    word-wrap: anywhere;
+    word-break: break-all;
 
     grid-column-start: 1;
     grid-column-end: 5;

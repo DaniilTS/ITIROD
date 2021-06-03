@@ -1,8 +1,8 @@
-document.getElementById('logInBtn').addEventListener('click', (e)=>{
+document.getElementById('logInBtn').addEventListener('click', ()=>{
    redirectTo('LogIn');
 });
 
-document.getElementById('signUpBtn').addEventListener('click', (e) => {
+document.getElementById('signUpBtn').addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const username = document.getElementById('userName').value;
     const password = document.getElementById('password').value;

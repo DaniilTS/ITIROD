@@ -4,16 +4,88 @@ const taskBar = document.getElementById('taskBar');
 const taskBarList = document.getElementById('taskBarList');
 const taskBarBtn = document.getElementById('taskBarBtn');
 
-setTimeout(()=>{
+setTimeout(() => {
     const tasksAppointmentsDbRef = database.ref(`users/${auth.currentUser.uid}/tasks|appointments`);
-
     tasksAppointmentsDbRef.on('value', (snapshot) => {
-        let tasks = snapshot.val();
-        let keys = Object.keys(tasks);
-        console.log(tasks);
+        taskBarList.innerHTML='';
+        createTaskBarItem(snapshot.val());
     });
 }, 500)
 
+function createTaskBarItem(data) {
+    let TA_keys = Object.keys(data);
+    let TA_values = Object.values(data);
+    const currentTime = dateTimeLocalToSeconds(getCurrentDateTime());
+    const endOfDayTime = dateTimeLocalToSeconds(getCurrentDateTime().substring(0, 11) + '23:59');
+    TA_values.forEach(item => {
+        createTaskBarListItems(item)
+    });
+}
+
+function createTaskBarListItems(item){
+    console.log(item.isDone);
+    if(item.reminders){
+        item.reminders.forEach(reminderVal =>{
+            let li = document.createElement('li');
+            li.classList.add('upcoming-tasks-bar__item');
+            li.classList.add('bar-item');
+
+            const timeSpan = document.createElement('span');
+            timeSpan.classList.add('bar-item__time');
+            timeSpan.innerText = secondToLocaleTimeString(reminderVal);
+
+            const colorSpan = document.createElement('span');
+            colorSpan.classList.add('bar-item__color');
+            colorSpan.style.backgroundColor = item.color;
+            if(item.isDone === false){
+                colorSpan.innerText='T';
+            }
+
+            const hr = document.createElement('hr');
+            hr.classList.add('bar-item__hr');
+
+            const definition = document.createElement('p');
+            definition.classList.add('bar-item__definition');
+            definition.innerText = item.description;
+
+            li.appendChild(timeSpan);
+            li.appendChild(colorSpan);
+            li.appendChild(hr);
+            li.appendChild(definition);
+
+            taskBarList.appendChild(li);
+        });
+    } else {
+        let li = document.createElement('li');
+        li.classList.add('upcoming-tasks-bar__item');
+        li.classList.add('bar-item');
+
+        const timeSpan = document.createElement('span');
+        timeSpan.classList.add('bar-item__time');
+        timeSpan.innerText = item.title;
+
+        const colorSpan = document.createElement('span');
+        colorSpan.classList.add('bar-item__color');
+        colorSpan.style.backgroundColor = item.color;
+        if(item.isDone === false){
+            colorSpan.innerText='T';
+        }
+
+        const hr = document.createElement('hr');
+        hr.classList.add('bar-item__hr');
+
+        const definition = document.createElement('p');
+        definition.classList.add('bar-item__definition');
+        definition.innerText = item.description;
+
+        li.appendChild(timeSpan);
+        li.appendChild(colorSpan);
+        li.appendChild(hr);
+        li.appendChild(definition);
+
+        taskBarList.appendChild(li);
+    }
+}
 
 setCurrentMonth();
 setViewButtonsActions();
