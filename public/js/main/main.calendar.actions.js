@@ -1,14 +1,10 @@
-const months = ["January", "February", "March", "April", "May", "June", "July", "August",
-    "September", "October", "November", "December"];
 const calendarViewsBtnList = document.querySelectorAll('button.calendar-views__button');
 const createNewBtn = document.getElementById('createNewBtn');
 const body = document.getElementById('body');
 const yearViewBtn = document.getElementById('yearView');
 const monthViewBtn = document.getElementById('monthView');
 const weekViewBtn = document.getElementById('weekView');
-let previousCurrentDayIndex = 0;
 
-let currentYear = new Date().getFullYear();
 let selectedViewIndex = 1;
 
 yearViewBtn.addEventListener('click', () => {
@@ -48,10 +44,8 @@ function changeView(addFunction, subtractFunction, newSpanId){
     // nextElButton.addEventListener('click', subtractFunction);
 }
 
-
 setCurrentMonth();
 setViewButtonsActions();
-recountMonthDays(currentYear, document.getElementById('middleTag').selectedIndex);
 
 function setCurrentMonth() {
     const currentMonth = new Date().getMonth();
@@ -74,9 +68,11 @@ function setViewButtonsActions() {
 createNewBtn.addEventListener('click', () => {
     redirectTo('CreateNew');
 });
-
 document.getElementById('nextElement').addEventListener('click', addMonth, false);
 document.getElementById('previousElement').addEventListener('click', subtractMonth, false);
+document.getElementById('logOutBtn').addEventListener('click', () => {
+    auth.signOut();
+});
 
 function addMonth() {
     const monthSelect = document.getElementById('middleTag');
@@ -114,57 +110,4 @@ function subtractInSpan(id){
     document.getElementById(id).innerText = (parseInt(span) - 1).toString();
 }
 
-function recountMonthDays(year, selectedMonth) {
-    const days = document.getElementsByClassName('day-number');
-    const daysInCurrentMonth = daysInMonth(year, selectedMonth);
 
-    if(selectedMonth === 0){
-        year--;
-        selectedMonth = 11;
-    }
-    const daysInPreviousMonth = daysInMonth(year, selectedMonth - 1);
-
-    let date = new Date(`${months[selectedMonth]} 01, ${year} 00:00:00`);
-    let startDay = date.getDay();
-
-    days[previousCurrentDayIndex].parentNode.classList.remove('calendar__day_today');
-
-    for (let i = 0; i < days.length; i++) {
-        days[i].innerHTML = '';
-    }
-
-    if(startDay === 0){
-        startDay = 7;
-    }
-
-    for(let i = 0; i < startDay - 1; i++){
-        days[i].innerHTML = (daysInPreviousMonth - startDay + i + 2).toString();
-        days[i].classList.add('day_not-this-month-day')
-    }
-
-    let counter = 1;
-    for (let i = startDay - 1; i < daysInCurrentMonth + startDay - 1; i++) {
-        days[i].innerHTML = (counter).toString();
-        days[i].classList.remove('day_not-this-month-day');
-        counter++;
-    }
-
-    counter = 1;
-    for (let i = daysInCurrentMonth + startDay - 1; i < days.length; i++) {
-        days[i].innerHTML = counter.toString();
-        days[i].classList.add('day_not-this-month-day')
-        counter++;
-    }
-
-    previousCurrentDayIndex = (new Date().getDate() + (startDay - 2));
-    days[previousCurrentDayIndex].parentNode.classList.add('calendar__day_today');
-}
-
-function daysInMonth(year, month) {
-    return new Date(year, month + 1, 0).getDate();
-}
-
-
-document.getElementById('logOutBtn').addEventListener('click', () => {
-    auth.signOut();
-});

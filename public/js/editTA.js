@@ -22,23 +22,36 @@ setTimeout(function (){
         const place = document.getElementById('place').value;
         const color = document.getElementById('color').value;
 
-        const remindersCheckResult = checkRemindersInputs();
-        if (checkInputs([title, description, start, end, color]) && remindersCheckResult.allInputsFilled) {
-            taskOrAppointmentDbRef.update({
-                title: title,
-                description: description,
-                start: start,
-                end: end,
-                place: place,
-                color: color,
-                isDone: leftRadioBtn.checked ? false : '',
-                reminders: remindersCheckResult.reminders
-            });
-
-            setTimeout(() => redirectTo('Main'), 1000);
+        if (checkInputs([title, description, start, end, color])) {
+            const remindersCheckResult = checkRemindersInputs(start, end);
+            if(remindersCheckResult.allInputsFilledAndCorrect){
+                if(new Date(start) > new Date() && start < end){
+                    updateTA(taskOrAppointmentDbRef, title, description, start, end, place, color, remindersCheckResult);
+                    setTimeout(() => redirectTo('Main'), 1000);
+                } else {
+                    alert('check your start/end inputs for correct values!');
+                }
+            } else {
+                alert('your reminders values are not correct');
+            }
+        } else {
+            alert('fill all inputs and reminders');
         }
     });
 }, 500)
+
+function updateTA(taskOrAppointmentDbRef, title, description, start, end, place, color, remindersCheckResult){
+    taskOrAppointmentDbRef.update({
+        title: title,
+        description: description,
+        start: start,
+        end: end,
+        place: place,
+        color: color,
+        isDone: leftRadioBtn.checked ? false : '',
+        reminders: remindersCheckResult.reminders
+    });
+}
 
 function fillForm(object){
     setRadioButtons(object);
@@ -55,7 +68,6 @@ function setReminders(object){
 }
 
 function setInputs(object){
-    console.log(object);
     title.value = object.title;
     description.value = object.description;
     start.value = object.start;

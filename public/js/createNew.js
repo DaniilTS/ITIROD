@@ -6,14 +6,18 @@ createNewBtn.addEventListener('click', () => {
     const place = document.getElementById('place').value;
     const color = document.getElementById('color').value;
 
-    const remindersCheckResult = checkRemindersInputs();
-    if (checkInputs([title, description, start, end, color]) && remindersCheckResult.allInputsFilled) {
-        if(new Date(start) > new Date() && start < end){
-            createTA(title, description, start, end, place, color, remindersCheckResult);
+    if (checkInputs([title, description, start, end, color])) {
+        const remindersCheckResult = checkRemindersInputs(start, end);
+        if(remindersCheckResult.allInputsFilledAndCorrect){
+            if(new Date(start) > new Date() && start < end){
+                createTA(title, description, start, end, place, color, remindersCheckResult);
+                setTimeout(() => redirectTo('Main'), 1000);
+            } else {
+                alert('check your start/end inputs for correct values!');
+            }
         } else {
-            alert('check your start/end inputs for correct values!');
+            alert('your reminders values are not correct');
         }
-
     } else {
         alert('fill all inputs and reminders');
     }
@@ -34,8 +38,6 @@ function createTA(title, description, start, end, place, color, remindersCheckRe
         isDone: leftRadioBtn.checked ? false : '',
         reminders: remindersCheckResult.reminders
     });
-
-    setTimeout(() => redirectTo('Main'), 1000);
 }
 
 

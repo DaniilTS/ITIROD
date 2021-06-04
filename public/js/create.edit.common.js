@@ -31,23 +31,23 @@ function checkInputs(inputs){
     return true;
 }
 
-function checkRemindersInputs() {
+function checkRemindersInputs(start, end) {
     const liList = remindersList.getElementsByTagName('li');
     const listLength = liList.length;
     let remindersArray = [];
 
     for (let i = 0; i < listLength; i++) {
         let reminderTime = liList[i].children[0].value;
-        if (!reminderTime) {
+        if (!reminderTime || reminderTime < start || reminderTime > end) {
             return {
-                allInputsFilled: false
+                allInputsFilledAndCorrect: false
             };
         }
         remindersArray.push(reminderTime);
     }
 
     return {
-        allInputsFilled: true,
+        allInputsFilledAndCorrect: true,
         reminders: remindersArray
     };
 }
