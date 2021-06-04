@@ -138,7 +138,7 @@ html{
 }
 
 .list-item:hover{
-    border: 1px solid var(--text-secondary-color);
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
 }
 
 .upcoming-tasks-bar__item {
@@ -280,8 +280,8 @@ html{
 .calendar-views__button_focused,
 .calendar-views__button:hover,
 .view-control__buttons:hover,
-.view-control__select:hover {
-    border: 1px solid var(--text-secondary-color);
+.view-control__middle-tag:hover {
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
     border-bottom-color: transparent;
 }
 
@@ -301,16 +301,22 @@ html{
     background-color: var(--header-color);
 }
 
-.view-control__select {
+.view-control__middle-tag {
     width: auto;
+    height: 100%;
     font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
 
     border-top: 1px solid var(--text-secondary-color);
     color: var(--text-secondary-color);
     background-color: var(--header-color);
 }
 
-.view-control__select > option {
+.view-control__middle-tag > option {
     font-size: 15px;
 }
 
@@ -332,7 +338,7 @@ html{
 
     padding-top: 1px;
     display: grid;
-    grid-template: 1fr repeat(5, 2.5fr)/repeat(7, 1fr);
+    grid-template: 1fr repeat(6, 2.5fr)/repeat(7, 1fr);
 
     column-gap: 1px;
     row-gap: 1px;
@@ -544,14 +550,14 @@ and (device-height: 812px) {
         font-size: 30px;
     }
 
-    .view-control__select {
+    .view-control__middle-tag {
         width: auto;
         font-size: 25px;
 
         border-top: 3px solid var(--text-secondary-color);
     }
 
-    .view-control__select > option {
+    .view-control__middle-tag > option {
         font-size: 15px;
     }
 

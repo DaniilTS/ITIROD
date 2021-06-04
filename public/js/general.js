@@ -88,7 +88,6 @@ function checkLength(value) {
 function updateUserName(){
     const userRef = database.ref(`users/${auth.currentUser.uid}`);
     userRef.on('value', (snapshot) => {
-        console.log(snapshot.val());
         document.getElementById('userName').innerText = snapshot.val().name;
     });
 

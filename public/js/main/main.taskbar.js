@@ -1,14 +1,10 @@
-const monthSelect = document.getElementById('monthSelect');
-const calendarViewsBtnList = document.querySelectorAll('button.calendar-views__button');
 const taskBar = document.getElementById('taskBar');
 const taskBarList = document.getElementById('taskBarList');
 const taskBarBtn = document.getElementById('taskBarBtn');
-const createNewBtn = document.getElementById('createNewBtn');
-const body = document.getElementById('body');
 
 setTimeout(() => {
     updateTaskBar();
-}, 500)
+}, 600)
 
 function updateTaskBar() {
     const tasksAppointmentsDbRef = database.ref(`users/${auth.currentUser.uid}/tasks|appointments`);
@@ -70,7 +66,6 @@ function createTaskBarListItems(item, itemKey) {
 }
 
 let dialogIsOpen = false;
-
 function createDialog(itemKey) {
     if (!dialogIsOpen) {
         dialogIsOpen = true;
@@ -134,85 +129,6 @@ function createDialogDeleteButton(dialogBlock) {
     });
 
     return btn;
-}
-
-setCurrentMonth();
-setViewButtonsActions();
-
-function setCurrentMonth() {
-    const currentMonth = new Date().getMonth();
-    monthSelect[currentMonth].selected = true;
-}
-
-let selectedViewIndex = 1;
-
-function setViewButtonsActions() {
-    for (let i = 0; i < calendarViewsBtnList.length; i++) {
-        let btn = calendarViewsBtnList[i];
-        btn.addEventListener('click', () => {
-            if (!btn.classList.contains('calendar-views__button_focused')) {
-                btn.classList.add('calendar-views__button_focused');
-                calendarViewsBtnList[selectedViewIndex].classList.remove('calendar-views__button_focused');
-                selectedViewIndex = i;
-            }
-        })
-    }
-}
-
-document.getElementById('logOutBtn').addEventListener('click', () => {
-    auth.signOut();
-});
-
-createNewBtn.addEventListener('click', () => {
-    redirectTo('CreateNew');
-});
-
-
-let currentYear = new Date().getFullYear();
-recountMonthDays(currentYear, monthSelect.selectedIndex);
-
-document.getElementById('nextMonth').addEventListener('click', () => {
-    if (monthSelect.selectedIndex !== 11) {
-        monthSelect.selectedIndex += 1;
-    } else {
-        monthSelect.selectedIndex = 0;
-        currentYear++;
-    }
-    recountMonthDays(currentYear, monthSelect.selectedIndex);
-});
-
-document.getElementById('previousMonth').addEventListener('click', () => {
-    if (monthSelect.selectedIndex !== 0) {
-        monthSelect.selectedIndex -= 1;
-    } else {
-        monthSelect.selectedIndex = 11;
-        currentYear--;
-    }
-    recountMonthDays(currentYear, monthSelect.selectedIndex);
-});
-
-function recountMonthDays(year, selectedMonth) {
-    const days = document.getElementsByClassName('day-number');
-    let daysInCurrentMonth = daysInMonth(year, selectedMonth);
-    let currentDate = new Date();
-    console.log('Текущее число месяца:', currentDate.getDate())
-    console.log('Текущий день недели', currentDate.getDay());
-
-    for (let i = 0; i < daysInCurrentMonth; i++) {
-        days[i].innerHTML = (i + 1).toString();
-        days[i].classList.remove('day_not-this-month-day')
-    }
-
-    const diff = 35 - daysInCurrentMonth;
-    for (let i = 0; i < diff; i++) {
-        let notThisMonthDay = days[35 - diff + i];
-        notThisMonthDay.innerHTML = i + 1;
-        notThisMonthDay.classList.add('day_not-this-month-day')
-    }
-}
-
-function daysInMonth(year, month) {
-    return new Date(year, month + 1, 0).getDate();
 }
 
 let taskBarBtnAction = 1;
@@ -333,6 +249,7 @@ function createGridItem(object, itemKey) {
         doneBtn.tabIndex = 1;
         doneBtn.innerText = 'Done';
         doneBtn.addEventListener('click', (e) => {
+            e.stopPropagation()
             if (confirm('Yoy really done this ?')) {
                 const selectedItemId = localStorage.getItem('selectedElementId');
                 const tasksAppointmentsDbRef = database.ref(`users/${auth.currentUser.uid}/tasks|appointments/${selectedItemId}`);

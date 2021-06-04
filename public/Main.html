@@ -32,13 +32,13 @@
     <div class="calendar-wrapper">
         <div class="calendar-actions">
             <div class="calendar-actions__calendar-views calendar-views">
-                <button class="calendar-views__button">Year</button>
-                <button class="calendar-views__button calendar-views__button_focused">Month</button>
-                <button class="calendar-views__button">Week</button>
+                <button id="yearView" class="calendar-views__button">Year</button>
+                <button id="monthView" class="calendar-views__button calendar-views__button_focused">Month</button>
+                <button id="weekView" class="calendar-views__button">Week</button>
             </div>
-            <div class="calendar-actions__view-control view-control">
-                <button id="previousMonth" class="view-control__button">&#9665</button>
-                <select id="monthSelect" class="view-control__select">
+            <div id="viewControlBlock" class="calendar-actions__view-control view-control">
+                <button id="previousElement" class="view-control__button">&#9665</button>
+                <select id="middleTag" class="view-control__middle-tag">
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -52,7 +52,7 @@
                     <option>November</option>
                     <option>December</option>
                 </select>
-                <button id="nextMonth" class="view-control__button">&#9655</button>
+                <button id="nextElement" class="view-control__button">&#9655</button>
             </div>
             <button id="createNewBtn" class="calendar-actions__button calendar-actions__button_create-new"></button>
         </div>
@@ -65,165 +65,71 @@
                 <span class="calendar__day-name">Fr</span>
                 <span class="calendar__day-name">St</span>
                 <span class="calendar__day-name">Sn</span>
-
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day" tabindex="1">
-                    <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
-                </div>
-                <div class="calendar__day day calendar__day_today" tabindex="1">
                     <span class="day-number"></span>
                     <div class="day-tasks">
                         <span class="day-tasks__color" style="background-color: #FFF501">T</span>
@@ -233,51 +139,103 @@
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
+                </div>
+                <div class="calendar__day day" tabindex="1">
+                    <span class="day-number"></span>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number day_not-this-month-day"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number day_not-this-month-day"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number day_not-this-month-day"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
                 <div class="calendar__day day" tabindex="1">
                     <span class="day-number day_not-this-month-day day_under-mobile-button"></span>
-                    <div class="day-tasks">
-
-                    </div>
+                    <div class="day-tasks"></div>
                 </div>
             </div>
         </div>
@@ -286,4 +244,5 @@
 </body>
 </html>
 
-<script src="js/main.js"></script>
+<script src="js/main/main.js"></script>
+<script src="js/main/main.taskbar.js"></script>

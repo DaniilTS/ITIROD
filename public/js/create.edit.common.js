@@ -1,14 +1,9 @@
-const logOutBtn = document.getElementById('logOutBtn');
 const leftRadioBtn = document.getElementById('creation-form__left-input');
 const rightRadioBtn = document.getElementById('creation-form__right-input');
 const addReminderBtn = document.getElementById('addReminderBtn');
 const remindersList = document.getElementById('remindersList');
 const createNewBtn = document.getElementById('createNewBtn');
 const closeBtn = document.getElementById('closeBtn');
-
-logOutBtn.addEventListener('click', () => {
-    auth.signOut();
-});
 
 leftRadioBtn.addEventListener('click', () => {
     rightRadioBtn.checked = false;
