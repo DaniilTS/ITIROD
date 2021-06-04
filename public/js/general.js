@@ -17,7 +17,7 @@ let auth = firebase.auth();
 
 auth.onAuthStateChanged(function(user) {
     if (user) {
-        console.log(user);
+        updateUserName();
     } else {
         checkUserIsOnAllowedPage();
     }
@@ -83,4 +83,13 @@ function checkLength(value) {
         value = '0' + value;
     }
     return value;
+}
+
+function updateUserName(){
+    const userRef = database.ref(`users/${auth.currentUser.uid}`);
+    userRef.on('value', (snapshot) => {
+        console.log(snapshot.val());
+        document.getElementById('userName').innerText = snapshot.val().name;
+    });
+
 }

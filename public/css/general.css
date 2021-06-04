@@ -179,4 +179,29 @@ and (device-height : 812px) {
         font-size: 40px;
         border-radius: 47px;
     }
+
+    .dialog-block{
+        width: 600px;
+        height: 400px;
+        border-radius: 30px;
+    }
+
+    .dialog-block__close-button{
+        height: 40px;
+        width: 40px;
+        font-size: 70px;
+        margin-top: 10px;
+        margin-right: 30px;
+    }
+
+    .dialog-block__main-buttons{
+        padding-top: 20px;
+    }
+
+    .dialog-block__button{
+        width: 90%;
+        height: 100px;
+        border-radius: 15px;
+        font-size: 40px;
+    }
 }

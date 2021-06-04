@@ -100,6 +100,10 @@ html{
     background-color: var(--form-content-color);
 }
 
+.list-open__item:hover{
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
+}
+
 .list-item__left-content{
     height: 100%;
     width: 90%;
@@ -150,10 +154,6 @@ html{
 
 .upcoming-tasks-bar__item:hover{
     box-shadow: inset 0 0 0 1px var(--text-secondary-color);
-}
-
-.upcoming-tasks-bar__item:focus{
-    box-shadow: inset 0 0 0 1px var();
 }
 
 .bar-item__time {
