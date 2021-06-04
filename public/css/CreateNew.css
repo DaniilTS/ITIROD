@@ -52,6 +52,10 @@
     background-color: var(--creation-form-background-color);
 }
 
+.creation-form__close-button:hover{
+    box-shadow: 0 0 0 0;
+}
+
 .creation-form__radios{
     display: flex;
     flex-direction: row;

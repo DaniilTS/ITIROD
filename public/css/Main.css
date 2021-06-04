@@ -148,6 +148,14 @@ html{
     background: linear-gradient(115deg, var(--task-color-from), var(--task-color-to));
 }
 
+.upcoming-tasks-bar__item:hover{
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
+}
+
+.upcoming-tasks-bar__item:focus{
+    box-shadow: inset 0 0 0 1px var();
+}
+
 .bar-item__time {
     margin-top: 1px;
     margin-left: 1px;

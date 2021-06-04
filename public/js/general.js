@@ -45,8 +45,11 @@ function dateTimeLocalToSeconds(dateTimeValue) {
     return Math.round(new Date(dateTimeValue) / 1000).toString();
 }
 
-function secondToLocaleTimeString(seconds){
-    return (new Date(seconds * 1000)).toLocaleTimeString('en-US').substring(0, 5)
+function formatDateTime(input){
+    let epoch = new Date(0);
+    epoch.setSeconds(parseInt(input));
+    let date = epoch.toISOString();
+    return date.split('.')[0].split(' ')[0] + ' ' + epoch.toLocaleTimeString().split(' ')[0];
 }
 
 function getCurrentDateTime() {
