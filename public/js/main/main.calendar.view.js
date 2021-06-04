@@ -2,13 +2,14 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
     "September", "October", "November", "December"];
 let previousCurrentDayIndex = 0;
 let currentYear = new Date().getFullYear();
-
+let currentWeek = new Date().getWeek();
 
 setTimeout(() => {
-    recountMonthDays(currentYear, document.getElementById('middleTag').selectedIndex)
+    recountMonthDays(currentYear)
 }, 600);
 
-function recountMonthDays(year, selectedMonth) {
+function recountMonthDays(year) {
+    let selectedMonth = document.getElementById('middleTag').selectedIndex;
     const days = document.getElementsByClassName('day-number');
     removeCurrentDayStyle(days);
 

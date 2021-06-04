@@ -12,7 +12,7 @@ function updateTaskBar() {
         document.getElementById('taskBarList').innerHTML = '';
         if (snapshot.val()) {
             let filteredArray = filterTasksAppointments(snapshot.val());
-            createTaskBarItem(filteredArray);
+            createTaskBarListItems(filteredArray);
         }
     });
 }
@@ -30,8 +30,7 @@ function filterTasksAppointments(array){
         const start = new Date(item.start);
         const end = new Date(item.end);
         if(isInRange(start, end, currentTime)
-            || isInRange(startOfDay, endOfDay, start)
-            || isInRange(startOfDay, endOfDay, end))
+            || isInRange(startOfDay, endOfDay, start) || isInRange(startOfDay, endOfDay, end))
         {
             filteredArray[keys[counter]] = item;
         }
@@ -41,21 +40,21 @@ function filterTasksAppointments(array){
     return filteredArray;
 }
 
-function isInRange(tstart, tend, checkTime) {
-    return tstart <= checkTime && checkTime <= tend;
+function isInRange(time_start, time_end, checkTime) {
+    return time_start <= checkTime && checkTime <= time_end;
 }
 
-function createTaskBarItem(data) {
+function createTaskBarListItems(data) {
     let TA_keys = Object.keys(data);
     let TA_values = Object.values(data);
     let counter = 0;
     TA_values.forEach(item => {
-        createTaskBarListItems(item, TA_keys[counter]);
+        createTaskBarItem(item, TA_keys[counter]);
         counter++;
     });
 }
 
-function createTaskBarListItems(item, itemKey) {
+function createTaskBarItem(item, itemKey) {
     let li = document.createElement('li');
     li.classList.add('upcoming-tasks-bar__item');
     li.classList.add('bar-item');
@@ -63,6 +62,10 @@ function createTaskBarListItems(item, itemKey) {
 
     const timeSpan = document.createElement('span');
     timeSpan.classList.add('bar-item__time');
+
+    if(item.reminders){
+        item.reminders = item.reminders.sort();
+    }
     timeSpan.innerText = item.reminders ? item.reminders[0].substring(11) : item.title;
 
     const colorSpan = document.createElement('span');

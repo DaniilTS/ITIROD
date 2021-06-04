@@ -1,47 +1,91 @@
 const calendarViewsBtnList = document.querySelectorAll('button.calendar-views__button');
 const createNewBtn = document.getElementById('createNewBtn');
 const body = document.getElementById('body');
-const yearViewBtn = document.getElementById('yearView');
-const monthViewBtn = document.getElementById('monthView');
-const weekViewBtn = document.getElementById('weekView');
 
-let selectedViewIndex = 1;
+selectedViewIndex = {
+    aInternal: 10,
+    aListener: function(val) {},
+    set value(val) {
+        this.aInternal = val;
+        this.aListener(val);
+    },
+    get value() {
+        return this.aInternal;
+    },
+    registerListener: function(listener) {
+        this.aListener = listener;
+    }
+}
 
-yearViewBtn.addEventListener('click', () => {
-    changeView(addYear, subtractYear, 'yearSpan');
+selectedViewIndex.value = 1;
+
+selectedViewIndex.registerListener(function (val){
+    document.getElementById('middleTag').remove();
+    const controlBlock = document.getElementById('viewControlBlock');
+    const prevElButton = document.getElementById('previousElement'), prevClone = prevElButton.cloneNode(true);
+    const nextElButton = document.getElementById('nextElement'), nextClone = nextElButton.cloneNode(true);
+
+    prevElButton.parentNode.replaceChild(prevClone, prevElButton);
+    nextElButton.parentNode.replaceChild(nextClone, nextElButton);
+
+    if(val === 0){ buildYearElements(controlBlock);}
+    else if(val === 1) { buildMonthElements(controlBlock); }
+    else { buildWeekElements(controlBlock); }
 });
 
-weekViewBtn.addEventListener('click', () => {
-    changeView(addWeek, subtractWeek, 'weekSpan');
-})
+function buildYearElements(controlBlock){
+    let div = document.createElement('div');
+    div.id = 'middleTag';
+    div.classList.add('view-control__middle-tag');
 
-function changeView(addFunction, subtractFunction, newSpanId){
-    // document.getElementById('middleTag').remove();
-    //
-    // const div = document.createElement('div');
-    // div.classList.add('view-control__middle-tag');
-    // div.id = 'middleTag';
-    //
-    // const span = document.createElement('span');
-    // span.id = newSpanId;
-    // span.innerText = currentYear.toString();
-    //
-    // div.appendChild(span);
-    // document.getElementById('viewControlBlock')
-    //     .insertBefore(div, document.getElementById('nextElement'));
-    //
-    // const prevElButton = document.getElementById('previousElement');
-    // const nextElButton = document.getElementById('nextElement');
-    //
-    // prevElButton.removeEventListener('click', subtractWeek, false);
-    // nextElButton.removeEventListener('click', addWeek, false);
-    // prevElButton.removeEventListener('click', subtractMonth, false);
-    // nextElButton.removeEventListener('click', addMonth, false);
-    // prevElButton.removeEventListener('click', subtractYear, false);
-    // nextElButton.removeEventListener('click', addYear, false);
-    //
-    // prevElButton.addEventListener('click', addFunction);
-    // nextElButton.addEventListener('click', subtractFunction);
+    let span = document.createElement('span');
+    span.innerText = currentYear.toString();
+
+    div.appendChild(span);
+    controlBlock.insertBefore(div, controlBlock.childNodes[2]);
+
+    document.getElementById('previousElement').addEventListener('click', () => {
+        subtractInSpan('middleTag');
+        currentYear--;
+    });
+
+    document.getElementById('nextElement').addEventListener('click', () => {
+        addInSpan('middleTag');
+        currentYear++;
+    });
+}
+
+function buildMonthElements(controlBlock){
+    let select = document.createElement('select');
+    select.id = 'middleTag';
+    select.classList.add('view-control__middle-tag');
+    select.addEventListener('change', () => { recountMonthDays(currentYear); });
+
+    months.forEach(month => {
+        const option = document.createElement('option');
+        option.textContent = month;
+        select.appendChild(option);
+    });
+
+    controlBlock.insertBefore(select, controlBlock.childNodes[2]);
+
+    document.getElementById('previousElement').addEventListener('click', subtractMonth);
+    document.getElementById('nextElement').addEventListener('click', addMonth);
+}
+
+function buildWeekElements(controlBlock){
+    let div = document.createElement('div');
+    div.id = 'middleTag';
+    div.classList.add('view-control__middle-tag');
+
+    let span = document.createElement('span');
+    span.innerText = '0';
+
+    div.appendChild(span);
+    controlBlock.insertBefore(div, controlBlock.childNodes[2]);
+
+    document.getElementById('previousElement').addEventListener('click', () => subtractInSpan('middleTag'));
+    document.getElementById('nextElement').addEventListener('click', () => addInSpan('middleTag'));
 }
 
 setCurrentMonth();
@@ -58,8 +102,8 @@ function setViewButtonsActions() {
         btn.addEventListener('click', () => {
             if (!btn.classList.contains('calendar-views__button_focused')) {
                 btn.classList.add('calendar-views__button_focused');
-                calendarViewsBtnList[selectedViewIndex].classList.remove('calendar-views__button_focused');
-                selectedViewIndex = i;
+                calendarViewsBtnList[selectedViewIndex.value].classList.remove('calendar-views__button_focused');
+                selectedViewIndex.value = i;
             }
         })
     }
@@ -73,6 +117,10 @@ document.getElementById('previousElement').addEventListener('click', subtractMon
 document.getElementById('logOutBtn').addEventListener('click', () => {
     auth.signOut();
 });
+document.getElementById('middleTag').addEventListener('click', () => {
+    recountMonthDays(currentYear);
+});
+
 
 function addMonth() {
     const monthSelect = document.getElementById('middleTag');
@@ -82,7 +130,7 @@ function addMonth() {
         monthSelect.selectedIndex = 0;
         currentYear++;
     }
-    recountMonthDays(currentYear, monthSelect.selectedIndex);
+    recountMonthDays(currentYear);
 }
 function subtractMonth() {
     const monthSelect = document.getElementById('middleTag');
@@ -92,14 +140,8 @@ function subtractMonth() {
         monthSelect.selectedIndex = 11;
         currentYear--;
     }
-    recountMonthDays(currentYear, monthSelect.selectedIndex);
+    recountMonthDays(currentYear);
 }
-
-function addYear() { addInSpan('yearSpan'); }
-function subtractYear() { subtractInSpan('yearSpan'); }
-
-function addWeek(){ addInSpan('weekSpan'); }
-function subtractWeek(){ subtractInSpan('weekSpan'); }
 
 function addInSpan(id){
     const span = document.getElementById(id).innerText;
