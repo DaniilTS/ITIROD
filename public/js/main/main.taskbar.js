@@ -11,16 +11,43 @@ function updateTaskBar() {
     tasksAppointmentsDbRef.on('value', (snapshot) => {
         document.getElementById('taskBarList').innerHTML = '';
         if (snapshot.val()) {
-            createTaskBarItem(snapshot.val());
+            let filteredArray = filterTasksAppointments(snapshot.val());
+            createTaskBarItem(filteredArray);
         }
     });
+}
+
+function filterTasksAppointments(array){
+    let keys = Object.keys(array);
+    array = Object.values(array);
+    let filteredArray = {};
+
+    const currentTime = new Date(getCurrentDateTime());
+    const startOfDay = new Date(getCurrentDateTime().substring(0, 11) + '00:00');
+    const endOfDay = new Date(getCurrentDateTime().substring(0, 11) + '23:59');
+    let counter = 0;
+    array.forEach(item => {
+        const start = new Date(item.start);
+        const end = new Date(item.end);
+        if(isInRange(start, end, currentTime)
+            || isInRange(startOfDay, endOfDay, start)
+            || isInRange(startOfDay, endOfDay, end))
+        {
+            filteredArray[keys[counter]] = item;
+        }
+        counter++;
+    })
+
+    return filteredArray;
+}
+
+function isInRange(tstart, tend, checkTime) {
+    return tstart <= checkTime && checkTime <= tend;
 }
 
 function createTaskBarItem(data) {
     let TA_keys = Object.keys(data);
     let TA_values = Object.values(data);
-    // const currentTime = dateTimeLocalToSeconds(getCurrentDateTime());
-    // const endOfDayTime = dateTimeLocalToSeconds(getCurrentDateTime().substring(0, 11) + '23:59');
     let counter = 0;
     TA_values.forEach(item => {
         createTaskBarListItems(item, TA_keys[counter]);

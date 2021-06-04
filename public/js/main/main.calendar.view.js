@@ -4,7 +4,9 @@ let previousCurrentDayIndex = 0;
 let currentYear = new Date().getFullYear();
 
 
-recountMonthDays(currentYear, document.getElementById('middleTag').selectedIndex);
+setTimeout(() => {
+    recountMonthDays(currentYear, document.getElementById('middleTag').selectedIndex)
+}, 600);
 
 function recountMonthDays(year, selectedMonth) {
     const days = document.getElementsByClassName('day-number');
