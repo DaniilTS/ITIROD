@@ -221,7 +221,8 @@ function drawOpenedGrid() {
     database.ref(`users/${auth.currentUser.uid}/tasks|appointments`).on('value', (snapshot) => {
         document.getElementById('taskBarList').innerHTML = '';
         if (snapshot.val()) {
-            updateOpenedGrid(snapshot.val());
+            let filteredArray = currentDayFilter(snapshot.val());
+            updateOpenedGrid(filteredArray);
         }
     });
 }
