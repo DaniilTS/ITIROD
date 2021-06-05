@@ -11,13 +11,13 @@ function updateTaskBar() {
     tasksAppointmentsDbRef.on('value', (snapshot) => {
         document.getElementById('taskBarList').innerHTML = '';
         if (snapshot.val()) {
-            let filteredArray = filterTasksAppointments(snapshot.val());
+            let filteredArray = currentDayFilter(snapshot.val());
             createTaskBarListItems(filteredArray);
         }
     });
 }
 
-function filterTasksAppointments(array){
+function currentDayFilter(array){
     let keys = Object.keys(array);
     array = Object.values(array);
     let filteredArray = {};

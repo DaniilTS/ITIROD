@@ -374,7 +374,7 @@ html{
 
 .day {
     padding: 5px;
-
+    min-width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -530,7 +530,7 @@ and (device-height: 812px) {
 
         position: absolute;
         right: 60px;
-        bottom: 180px;
+        bottom: 140px;
 
         font-size: 70px;
     }

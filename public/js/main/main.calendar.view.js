@@ -6,7 +6,7 @@ let currentWeek = new Date().getWeek();
 
 setTimeout(() => {
     recountMonthDays(currentYear)
-}, 600);
+}, 400);
 
 function recountMonthDays(year) {
     let selectedMonth = document.getElementById('middleTag').selectedIndex;
@@ -26,6 +26,8 @@ function recountMonthDays(year) {
     fillPreviousMonthDays(days, startDay, daysInPreviousMonth);
     fillCurrentMonthDays(days, startDay, daysInCurrentMonth);
     fillNextMonthDays(days, startDay, daysInCurrentMonth);
+
+    fillDaysWithTasksAndAppointments(days);
 
     setCurrentDayStyle(days, startDay);
 }
@@ -74,6 +76,47 @@ function removeCurrentDayStyle(days){
 function setCurrentDayStyle(days, startDay){
     previousCurrentDayIndex = (new Date().getDate() + (startDay - 2));
     days[previousCurrentDayIndex].parentNode.classList.add('calendar__day_today');
+}
+
+function fillDaysWithTasksAndAppointments(days){
+    const tasksAppointmentsDbRef = database.ref(`users/${auth.currentUser.uid}/tasks|appointments`);
+    tasksAppointmentsDbRef.on('value', (snapshot) => {
+        if (snapshot.val()) {
+            let filteredArray = monthFilter(snapshot.val());
+            fillMonth(filteredArray);
+        }
+    });
+}
+
+function monthFilter(array){
+    let keys = Object.keys(array);
+    array = Object.values(array);
+    let filteredArray = {};
+
+    const daysInM = daysInMonth(currentYear, document.getElementById('middleTag').selectedIndex);
+    const currentTime = new Date(getCurrentDateTime());
+    const startOfMonth =
+        new Date( getCurrentDateTime().substring(0, 8) + '01' + getCurrentDateTime().substring(10, 11) + '00:00');
+    const endOfMonth =
+        new Date(getCurrentDateTime().substring(0, 8) + daysInM + getCurrentDateTime().substring(10, 11) + '23:59');
+
+    let counter = 0;
+    array.forEach(item => {
+        const start = new Date(item.start);
+        const end = new Date(item.end);
+        if(isInRange(start, end, currentTime)
+            || isInRange(startOfMonth, endOfMonth, start) || isInRange(startOfMonth, endOfMonth, end))
+        {
+            filteredArray[keys[counter]] = item;
+        }
+        counter++;
+    })
+
+    return filteredArray;
+}
+
+function fillMonth(array){
+
 }
 
 function daysInMonth(year, month) {

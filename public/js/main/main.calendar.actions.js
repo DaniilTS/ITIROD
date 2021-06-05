@@ -22,8 +22,10 @@ selectedViewIndex.value = 1;
 selectedViewIndex.registerListener(function (val){
     document.getElementById('middleTag').remove();
     const controlBlock = document.getElementById('viewControlBlock');
-    const prevElButton = document.getElementById('previousElement'), prevClone = prevElButton.cloneNode(true);
-    const nextElButton = document.getElementById('nextElement'), nextClone = nextElButton.cloneNode(true);
+    const prevElButton = document.getElementById('previousElement'),
+        prevClone = prevElButton.cloneNode(true);
+    const nextElButton = document.getElementById('nextElement'),
+        nextClone = nextElButton.cloneNode(true);
 
     prevElButton.parentNode.replaceChild(prevClone, prevElButton);
     nextElButton.parentNode.replaceChild(nextClone, nextElButton);
@@ -120,7 +122,6 @@ document.getElementById('logOutBtn').addEventListener('click', () => {
 document.getElementById('middleTag').addEventListener('click', () => {
     recountMonthDays(currentYear);
 });
-
 
 function addMonth() {
     const monthSelect = document.getElementById('middleTag');
