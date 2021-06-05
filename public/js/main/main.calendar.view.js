@@ -29,7 +29,10 @@ function recountMonthDays(year) {
 
     fillDaysWithTasksAndAppointments(days);
 
-    setCurrentDayStyle(days, startDay);
+
+    if(selectedMonth === new Date().getMonth() && currentYear === new Date().getFullYear()){
+        setCurrentDayStyle(days, startDay);
+    }
 }
 
 function getStartDate(selectedMonth, year){
