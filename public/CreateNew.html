@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <title>Create New...</title>
     <link type="text/css" rel="stylesheet" href="css/Edit.css">
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+    <script src="js/config.json" type="application/json"></script>
+    <script src="js/general.js"></script>
 </head>
 <body class="body">
 <header class="header">
     <h1>RemindMe</h1>
     <div class="header-div">
-        <h2 class="header-div__username">DaniilTS</h2>
-        <button class="header-div__button">Log Out</button>
+        <h2 id="userName" class="header-div__username"></h2>
+        <button id="logOutBtn" class="header-div__button">Log Out</button>
     </div>
 </header>
 <main class="main">
@@ -18,7 +27,7 @@
         <div class="creation-form__content">
             <div class="creation-form__top">
                 <span class="creation-form__span" id="create-new-span">Create New...</span>
-                <button class="creation-form__close-button">&#9587</button>
+                <button id="closeBtn" class="creation-form__close-button" type="button">&#9587</button>
             </div>
             <div class="creation-form__radios radio">
                 <label class="radio__label">
@@ -30,25 +39,27 @@
                     <input class="creation-form__radio" id="creation-form__right-input" type="radio" checked="checked">
                 </label>
             </div>
-            <input class="creation-form__input" type="text" placeholder="Title">
-            <input class="creation-form__input" type="text" placeholder="Description">
+            <input id="title" class="creation-form__input" type="text" placeholder="Title">
+            <input id="description" class="creation-form__input" type="text" placeholder="Description">
             <div class="creation-form__date-inputs">
-                <input class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
-                <input class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                <input id="start" class="creation-form__date-input" placeholder="Start" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
+                <input id="end" class="creation-form__date-input" placeholder="End" onfocus="(this.type='datetime-local')" onblur="(this.type='text')">
             </div>
-            <button class="creation-form__button reminder-button" type="button">Add Reminder</button>
+            <button id="addReminderBtn" class="creation-form__button reminder-button" type="button">Add Reminder</button>
             <div class="creation-form__reminders reminders">
                 <span class="reminders__span">Reminders:</span>
-                <ul class="reminders-list">
-
+                <ul id="remindersList" class="reminders-list">
                 </ul>
             </div>
-            <input class="creation-form__input" type="text" placeholder="Place">
-            <input class="creation-form__input" type="color" value="#47BF63">
+            <input id="place" class="creation-form__input" type="text" placeholder="Place">
+            <input id="color" class="creation-form__input" type="color" value="#47BF63">
 
-            <button class="creation-form__button" type="submit">Done</button>
+            <button id="createNewBtn" class="creation-form__button" type="button">Done</button>
         </div>
     </form>
 </main>
 </body>
 </html>
+
+<script src="js/create.edit.common.js"></script>
+<script src="js/createNew.js"></script>

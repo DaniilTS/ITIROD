@@ -1,0 +1,8 @@
+{
+  "noAuthPages": [
+    "index",
+    "LogIn",
+    "SignUp"
+  ],
+  "noAuthRedirectPage": "LogIn"
+}

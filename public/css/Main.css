@@ -100,6 +100,10 @@ html{
     background-color: var(--form-content-color);
 }
 
+.list-open__item:hover{
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
+}
+
 .list-item__left-content{
     height: 100%;
     width: 90%;
@@ -134,12 +138,13 @@ html{
 }
 
 .list-item:hover{
-    border: 1px solid var(--text-secondary-color);
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
 }
 
 .upcoming-tasks-bar__item {
     height: inherit;
     min-width: 80px;
+    min-height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr 0.05rem 3fr;
@@ -147,10 +152,16 @@ html{
     background: linear-gradient(115deg, var(--task-color-from), var(--task-color-to));
 }
 
+.upcoming-tasks-bar__item:hover{
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
+}
+
 .bar-item__time {
     margin-top: 1px;
+    margin-left: 1px;
     align-self: center;
 
+    overflow: hidden;
     color: var(--text-secondary-color);
 
     grid-column-start: 1;
@@ -187,12 +198,11 @@ html{
     font-size: 13px;
     padding-left: 2px;
     align-self: center;
-    justify-self: center;
 
     color: var(--text-secondary-color);
 
     overflow: hidden;
-    word-wrap: anywhere;
+    word-break: break-all;
 
     grid-column-start: 1;
     grid-column-end: 5;
@@ -210,15 +220,15 @@ html{
     color: var(--text-secondary-color);
     background-color: transparent;
     cursor: pointer;
+    box-shadow: 0 0 0 0;
 }
 
-.upcoming-tasks-bar__button:hover {
+.upcoming-tasks-bar__button:hover{
+    box-shadow: 0 0 0 0;
+}
+
+.upcoming-tasks-bar__button__action {
     transform: rotate(180deg);
-    border: none;
-}
-
-.upcoming-tasks-bar__button:not(hover) {
-    transform: rotate(0deg);
 }
 
 .calendar-not-open{
@@ -270,8 +280,8 @@ html{
 .calendar-views__button_focused,
 .calendar-views__button:hover,
 .view-control__buttons:hover,
-.view-control__select:hover {
-    border: 1px solid var(--text-secondary-color);
+.view-control__middle-tag:hover {
+    box-shadow: inset 0 0 0 1px var(--text-secondary-color);
     border-bottom-color: transparent;
 }
 
@@ -291,16 +301,22 @@ html{
     background-color: var(--header-color);
 }
 
-.view-control__select {
+.view-control__middle-tag {
     width: auto;
+    height: 100%;
     font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
 
     border-top: 1px solid var(--text-secondary-color);
     color: var(--text-secondary-color);
     background-color: var(--header-color);
 }
 
-.view-control__select > option {
+.view-control__middle-tag > option {
     font-size: 15px;
 }
 
@@ -322,7 +338,7 @@ html{
 
     padding-top: 1px;
     display: grid;
-    grid-template: 1fr repeat(5, 2.5fr)/repeat(7, 1fr);
+    grid-template: 1fr repeat(6, 2.5fr)/repeat(7, 1fr);
 
     column-gap: 1px;
     row-gap: 1px;
@@ -358,7 +374,7 @@ html{
 
 .day {
     padding: 5px;
-
+    min-width: 100px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -514,7 +530,7 @@ and (device-height: 812px) {
 
         position: absolute;
         right: 60px;
-        bottom: 180px;
+        bottom: 140px;
 
         font-size: 70px;
     }
@@ -534,14 +550,14 @@ and (device-height: 812px) {
         font-size: 30px;
     }
 
-    .view-control__select {
+    .view-control__middle-tag {
         width: auto;
         font-size: 25px;
 
         border-top: 3px solid var(--text-secondary-color);
     }
 
-    .view-control__select > option {
+    .view-control__middle-tag > option {
         font-size: 15px;
     }
 
